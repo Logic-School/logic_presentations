@@ -19,3 +19,4 @@ class StudentPresentation(models.Model):
     presentation_id = fields.Many2one('logic.presentations',string="Presentation")
     feedback = fields.Text(string="Feedback")
     rating = fields.Selection(selection=[('0','No rating'),('1','Very Poor'),('2','Poor'),('3','Average'),('4','Good'),('5','Very Good')], string="Rating", default='0')
+    batch_id = fields.Many2one('logic.base.batch',string="Batch")
