@@ -35,3 +35,10 @@ class StudentPresentation(models.Model):
     feedback = fields.Text(string="Feedback")
     rating = fields.Selection(selection=[('0','No rating'),('1','Very Poor'),('2','Poor'),('3','Average'),('4','Good'),('5','Very Good')], string="Rating", default='0')
     batch_id = fields.Many2one('logic.base.batch',string="Batch")
+    
+    @api.onchange('batch_id')
+    def get_students_domain(self):
+        already_presented_stud_ids = []
+        for presentation in self.presentation_id.student_presentations:
+            already_presented_stud_ids.append(presentation.student_id.id)
+        return {'domain': {'student_id': [('batch_id','=',self.batch_id.id),('id','not in',already_presented_stud_ids)]}}
