@@ -18,11 +18,11 @@ class LogicPresentation(models.Model):
 
     @api.depends('batch_id')
     def get_total_students(self):
-        # for record in self:
-        if self.batch_id:
-            self.total_students = self.env['logic.students'].search_count([('batch_id','=',self.batch_id.id)])
-        else:
-            self.total_students = 0
+        for record in self:
+            if record.batch_id:
+                record.total_students = self.env['logic.students'].search_count([('batch_id','=',record.batch_id.id)])
+            else:
+                record.total_students = 0
     presentation_count = fields.Integer(string="Students Presented",compute="_compute_presentation_count")
     def _compute_presentation_count(self):
         for record in self:
