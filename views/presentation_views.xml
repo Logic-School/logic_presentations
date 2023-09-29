@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="logic_presentations_action">
+        <field name="name">Presentations</field>
+        <field name="res_model">logic.presentations</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Presentations" id="menu_presentation"
+              action="logic_presentations_action"
+              sequence="9"
+              web_icon="logic_presentations/static/description/icon.png"/>
+
+    <record id="logic_presentation_tree" model="ir.ui.view">
+        <field name="name"> Presentation Tree</field>
+        <field name="model">logic.presentations</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="batch_id"/>
+                <field name="coordinator"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="logic_presentation_form" model="ir.ui.view">
+        <field name="name"> Presentation Form</field>
+        <field name="model">logic.presentations</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="coordinator"/>
+                            <field name="date"/>
+                            <field name="batch_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Presentations">
+                            <field name="student_presentations">
+                                <tree editable="bottom">
+                                    <field name="student_id"/>
+                                    <field name="rating" widget="priority"/>
+                                    <field name="feedback"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
