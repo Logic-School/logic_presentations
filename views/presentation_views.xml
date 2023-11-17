@@ -11,7 +11,7 @@
               web_icon="logic_presentations/static/description/icon.png"/>
 
     <record id="logic_presentation_tree" model="ir.ui.view">
-        <field name="name"> Presentation Tree</field>
+        <field name="name">Presentation Tree</field>
         <field name="model">logic.presentations</field>
         <field name="type">tree</field>
         <field name="arch" type="xml">
@@ -27,11 +27,15 @@
     </record>
 
     <record id="logic_presentation_form" model="ir.ui.view">
-        <field name="name"> Presentation Form</field>
+        <field name="name">Presentation Form</field>
         <field name="model">logic.presentations</field>
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Form">
+                <header>
+                    <field name="state" widget="statusbar"/>
+                    <button name="action_submit" string="Submit" type="object" states="draft" class="oe_highlight"/>
+                </header>
                 <sheet>
                     <group>
                         <group>
