@@ -16,6 +16,7 @@ class LogicPresentation(models.Model):
     coordinator = fields.Many2one('res.users', string="Coordinator", readonly=True, default=lambda self: self.env.user)
     batch_id = fields.Many2one('logic.base.batch', string="Batch", required=True)
     date = fields.Date(string="Date", required=True)
+    branch = fields.Many2one('logic.base.branches', related='batch_id.branch_id', string="Branch")
     student_presentations = fields.One2many('logic.student.presentation', 'presentation_id', string='Presentations')
     total_students = fields.Integer(string="Total Strength", compute="get_total_students", readonly=True)
     state = fields.Selection([('draft', 'Draft'), ('submit', 'Submitted')], default='draft', string="State",

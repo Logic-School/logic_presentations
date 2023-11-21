@@ -42,6 +42,7 @@
                             <field name="coordinator"/>
                             <field name="date"/>
                             <field name="batch_id"/>
+                            <field name="branch"/>
                         </group>
                         <group>
                             <field name="presentation_count"/>
