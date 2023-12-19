@@ -17,6 +17,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="date"/>
+                <field name="faculty_id"/>
                 <field name="batch_id"/>
                 <field name="presentation_count"/>
                 <field name="total_students"/>
@@ -40,6 +41,7 @@
                     <group>
                         <group>
                             <field name="coordinator"/>
+                            <field name="faculty_id" options="{ 'no_create': True }"/>
                             <field name="date"/>
                             <field name="batch_id"/>
                             <field name="branch"/>
