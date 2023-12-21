@@ -21,6 +21,7 @@ class LogicPresentation(models.Model):
     total_students = fields.Integer(string="Total Strength", compute="get_total_students", readonly=True)
     state = fields.Selection([('draft', 'Draft'), ('submit', 'Submitted')], default='draft', string="State",
                              tracking=True)
+    course_id = fields.Many2one('logic.base.courses', string="Course", related='batch_id.course_id')
     faculty_id = fields.Many2one('res.users', string="Faculty", domain=[('faculty_check', '=', True)],)
 
     def action_submit(self):

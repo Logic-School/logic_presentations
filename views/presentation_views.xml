@@ -40,13 +40,16 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="coordinator"/>
                             <field name="faculty_id" options="{ 'no_create': True }"/>
-                            <field name="date"/>
+
                             <field name="batch_id"/>
+                            <field name="course_id"/>
                             <field name="branch"/>
                         </group>
                         <group>
+                            <field name="coordinator"/>
+
+                            <field name="date"/>
                             <field name="presentation_count"/>
                             <field name="total_students"/>
                         </group>
